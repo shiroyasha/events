@@ -2,6 +2,14 @@ version: '2'
 
 services:
 
+  web:
+    build: app/web
+    links:
+      - api:api
+      - front:front
+    ports:
+      - 80:80
+
   worker:
     build: app/worker
     environment: &env
@@ -19,6 +27,13 @@ services:
       - db:db
     ports:
       - 3000:4567
+
+  front:
+    build: app/front
+    links:
+      - api:api
+    ports:
+      - 4000:3000
 
   db:
     image: postgres:9.4.1
