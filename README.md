@@ -5,8 +5,10 @@ application design.
 
 Service | Description
 --------|------------
+Web     | Nginx proxy for Front and Api
+Api     | HTTP API that allows listing existing events
+Front   | React/Webpack/Node app for HTML interface
 Worker  | Listens on "events" Rabbit exchange and saves incomming events into a database
-Api     | Web HTTP API that allows listing existing events
 
 ## Setup
 
@@ -48,3 +50,9 @@ $ curl localhost:3000
 
 [{"id": 1, "description": {"event":"hello"}]
 ```
+
+HTML:
+
+Visit `locahost` in your browser to observe stored events.
+
+![events](docs/front.png)

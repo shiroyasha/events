@@ -7,4 +7,3 @@ ActiveRecord::Base.establish_connection($db_url)
 
 class Event < ActiveRecord::Base
 end
-
