@@ -3,9 +3,7 @@
 Toy application displaying the power of docker-compose and modular web
 application design.
 
-The app consist of two parts:
-
-service | description
+Service | Description
 --------|------------
 Worker  | Listens on "events" Rabbit exchange and saves incomming events into a database
 Api     | Web HTTP API that allows listing existing events
