@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require "tackle"
+
+options = {
+  :url => ENV["AMQP_URL"],
+  :exchange => "events",
+  :routing_key => "new-event"
+}
+
+message = ARGV.pop
+
+p options
+p message
+
+Tackle.publish(message, options)

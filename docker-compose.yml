@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  worker:
+    build: app/worker
+    environment: &env
+      AMQP_URL: amqp://rabbitmq
+      DB_URL: postgres://postgres:the-cake-is-a-lie@db/events
+    links: &links
+      - rabbitmq:rabbitmq
+      - db:db
+
+  api:
+    build: app/api
+    environment:
+      DB_URL: postgres://postgres:the-cake-is-a-lie@db/events
+    links:
+      - db:db
+    ports:
+      - 3000:4567
+
+  db:
+    image: postgres:9.4.1
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "the-cake-is-a-lie"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    logging:
+      driver: "none" # pssst!
+
+volumes:
+  postgres-data:
+    driver: local
