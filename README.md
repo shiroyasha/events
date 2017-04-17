@@ -5,13 +5,10 @@ application design.
 
 The app consist of two parts:
 
-#### Worker
-
-Listens on "events" Rabbit exchange and saves incomming events into a database
-
-#### Api 
-
-Web HTTP API that allows listing existing events
+service | description
+--------|------------
+Worker  | Listens on "events" Rabbit exchange and saves incomming events into a database
+Api     | Web HTTP API that allows listing existing events
 
 ## Setup
 
